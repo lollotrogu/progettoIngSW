@@ -1,0 +1,14 @@
+# Usa un'immagine PHP con Apache preconfigurato
+FROM php:8.1-apache
+
+# Installa le estensioni PHP richieste (modifica in base alle tue necessità)
+RUN docker-php-ext-install pdo pdo_mysql
+
+# Copia i file del progetto nella directory predefinita di Apache
+COPY . /var/www/html/
+
+# Imposta i permessi per i file
+RUN chown -R www-data:www-data /var/www/html
+
+# Esponi la porta 80
+EXPOSE 80
