@@ -1,26 +1,32 @@
+version: '3'
 
 services:
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Lorenzo2003  # Cambia con la tua password
+      MYSQL_DATABASE: progetto_ingegneria_sw  # Cambia con il nome del tuo database
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./data/mysql:/var/lib/mysql  # Volume per i dati di MySQL
+      - ./dump:/docker-entrypoint-initdb.d  # Volume per il dump SQL
+    networks:
+      - app-network  # Collega il servizio mysql alla rete app-network
+    restart: always  # Facoltativo, per riavviare automaticamente MySQL in caso di errore
+
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile  # Assicurati che il Dockerfile sia nella root del progetto
     ports:
       - "8080:80"
-    volumes:
-      - .:/var/www/html
+    networks:
+      - app-network  # Collega il servizio app alla rete app-network
     depends_on:
-      - db
+      - mysql  # Garantisce che MySQL parta prima dell'app
 
-  db:
-    image: mysql:8.0
-    container_name: mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: Lorenzo2003
-      MYSQL_DATABASE: progetto_ingegneria_sw
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./progetto_ingegneria_sw_dump_container.sql:/docker-entrypoint-initdb.d/progetto_ingegneria_sw_dump_container.sql
+# Definizione della rete
+networks:
+  app-network:
+    driver: bridge  # Utilizza il driver bridge (predefinito)
