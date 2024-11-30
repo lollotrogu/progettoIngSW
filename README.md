@@ -1,2 +1,2 @@
 # progettoIngSW
-Progetto Ingegneria del Software TROGU SANTACROCE TAFURO
+Progetto Ingegneria del Software TROGU SANTACROCE TAFURO GHIBULET
