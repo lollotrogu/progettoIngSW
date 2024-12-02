@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <h1>Benvenuto su Social Gite!</h1>
+        <h1>Benvenuto su TripMate!</h1>
         <p>Connettiti con amici per fantastiche gite e scampagnate.</p>
     </header>
     <main>
