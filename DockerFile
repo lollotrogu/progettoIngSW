@@ -10,5 +10,7 @@ COPY . /var/www/html/
 # Imposta i permessi per i file
 RUN chown -R www-data:www-data /var/www/html
 
+
+
 # Esponi la porta 80
 EXPOSE 80
