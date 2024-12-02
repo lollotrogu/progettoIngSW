@@ -23,7 +23,7 @@ switch ($requestUri) {
         loadView('login_register');
         break;
 
-    case 'login': // Pagina di login
+   /* case 'login': // Pagina di login
         loadView('login');
         break;
 
@@ -44,7 +44,7 @@ switch ($requestUri) {
     case 'logout': // Logout
         session_destroy();
         header('Location: /');
-        break;
+        break;*/
 
     default: // Rotta non trovata
         http_response_code(404);
